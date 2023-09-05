@@ -16,26 +16,24 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class PtsApplication {
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		SpringApplication.run(PtsApplication.class, args);
+		System.out.println("in Main");
 	}
-	
+
 	@Bean
 	public Docket swaggerConfiguration() {
 
 		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("com.capgemini.pts.controller")).build().apiInfo(apiInfo());
+				.apis(RequestHandlerSelectors.basePackage("com.capgemini.pts.controller")).build().apiInfo(apiInfo());
 
-   }
+	}
 
-   @SuppressWarnings("deprecation")
-    private ApiInfo apiInfo() {
-        
-        return new ApiInfoBuilder().title("Demo World")
-                .description("Demo World")
-                .termsOfServiceUrl("http://world.com")
-                .contact("world@gmail.com").license("My License")
-                .licenseUrl("world@gmail.com").version("1.0").build();
-    }
+	@SuppressWarnings("deprecation")
+	private ApiInfo apiInfo() {
+
+		return new ApiInfoBuilder().title("Demo World").description("Demo World").termsOfServiceUrl("http://world.com")
+				.contact("world@gmail.com").license("My License").licenseUrl("world@gmail.com").version("1.0").build();
+	}
 
 }
